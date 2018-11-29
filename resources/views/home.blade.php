@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('titulo_pagina')
+    <i class="fas fa-th"></i> Dashboard
+@endsection
+
 @section('conteudo')
     <!-- CARDBOX -->
     <div class="row">
@@ -79,8 +83,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
-                {{ $menu }}
 
                 You are logged in!
 

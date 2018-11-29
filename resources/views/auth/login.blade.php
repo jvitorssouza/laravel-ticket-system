@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap Admin App + jQuery">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-    <title>Gestor 2.0</title>
+    <title>HelpTI</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -49,10 +49,17 @@
                         <div class="input-group with-focus">
                             <input type="password" name="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Senha" required>
                             <div class="input-group-append">
-                                <span class="input-group-text fas fa-user-lock text-muted bg-transparent border-left-0"></span>
+                                <span class="input-group-text fas fa-key text-muted bg-transparent border-left-0"></span>
                             </div>
                         </div>
                     </div>
+
+                    @if ($errors->has('credencial_senha'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('credencial_senha') }}</strong>
+                        </span>
+                    @endif
+
                     <button class="btn btn-block btn-primary mt-3" type="submit">Entrar</button>
                 </form>
             </div>

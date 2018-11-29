@@ -39,7 +39,7 @@
 
             <!-- BTN LOGOUT -->
             <li class="nav-item d-none d-md-block">
-                <a class="nav-link">
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                     <em class="fas fa-sign-out-alt"></em>
                 </a>
             </li>
@@ -47,3 +47,8 @@
     </nav>
 </header>
 <!-- FIM NAVBAR -->
+
+
+<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>

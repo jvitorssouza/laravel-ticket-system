@@ -15,8 +15,8 @@
         <!-- Page content-->
         <div class="content-wrapper">
             <div class="content-heading">
-                <div>Dashboard
-                    <small data-localize="dashboard.WELCOME"></small>
+                <div>
+                    @yield('titulo_pagina')
                 </div>
             </div>
 
