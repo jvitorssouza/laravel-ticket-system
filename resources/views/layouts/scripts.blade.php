@@ -16,5 +16,6 @@
 <!-- =============== APP SCRIPTS ===============-->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/iziToast.js') }}"></script>
+<script src="{{ asset('assets/js/funcoesAux.js') }}"></script>
 
 @yield('scripts')

@@ -61,6 +61,9 @@
 @endsection
 
 @section('scripts')
+
+	@include('categorias.script')
+	
     <script>
 
         $(function() {
@@ -70,32 +73,8 @@
         $(document).ready(function () {
 
             $('.btnPesquisa').click(function () {
-                $.ajax({
-                    url: "{{route('categorias.index')}}",
-                    method: 'get',
-                    dataType: 'json',
-                    data: {},
-                    success: function (resposta) {
-                        console.log(resposta);
-                        if (resposta.data.length > 0) {
-
-                            let html = '';
-
-                            for (let i = 0; i < resposta.data.length; i++) {
-                                html += '<tr>';
-                                html += '<td>' + resposta.data[i].categoria_codigo + '</td>';
-                                html += '<td>' + resposta.data[i].categoria_descricao + '</td>';
-                                html += '<td>' + resposta.data[i].prioridade_descricao + '</td>';
-                                html += '</tr>';
-                            }
-
-                            $('.tabela_categorias tbody').html(html);
-
-                            $('.cardConteudo').fadeIn();
-                        }
-                    }
-                });
+				auxfn_do_ajax("{{route('categorias.index')}}", '', lista.do_alimenta_tabela, null)
             });
-        });
+		});
     </script>
 @endsection
