@@ -13,9 +13,39 @@
 <script src="{{ asset('vendor/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 <!-- MOMENT JS-->
 <script src="{{ asset('vendor/moment/min/moment-with-locales.js') }}"></script>
+
+<script>
+    moment.locale("pt-br");
+</script>
+
+<!-- CONFIRM -->
+<script src="{{ asset('vendor/jquery-confirm/jquery-confirm.min.js') }}"></script>
 <!-- =============== APP SCRIPTS ===============-->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/iziToast.js') }}"></script>
+<script src="{{ asset('assets/js/fancybox.js?v=2.1.5') }}"></script>
+<script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
+
 <script src="{{ asset('assets/js/funcoesAux.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.multi-select.js') }}"></script>
+
+
+@if(session()->has('message'))
+    <script>
+        iziToast.success({
+            title: '',
+            message: '{{ session()->get('message') }}',
+        });
+    </script>
+@endif
+
+@if(session()->has('error'))
+    <script>
+        iziToast.error({
+            title: '',
+            message: '{{ session()->get('message') }}',
+        });
+    </script>
+@endif
 
 @yield('scripts')

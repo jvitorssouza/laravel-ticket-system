@@ -6,10 +6,10 @@
         <div class="navbar-header">
             <a class="navbar-brand">
                 <div class="brand-logo">
-                    <img class="img-fluid" src="assets/images/logo.png" alt="App Logo">
+                    <img class="img-fluid" src="{{ asset('assets/images/logo.png') }}" alt="App Logo">
                 </div>
                 <div class="brand-logo-collapsed">
-                    <img class="img-fluid" src="assets/images/logo-single.png" alt="App Logo">
+                    <img class="img-fluid" src="{{ asset('assets/images/logo-single.png') }}" alt="App Logo">
                 </div>
             </a>
         </div>
@@ -47,7 +47,6 @@
     </nav>
 </header>
 <!-- FIM NAVBAR -->
-
 
 <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{ csrf_field() }}

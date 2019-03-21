@@ -21,5 +21,27 @@ function auxfn_do_ajax(url, dataString, callback_ok, callback_fail){
 
 function auxfn_callback_fail_default(r){
 	console.error(r);
-	alert("Ocorreu uma falha na comunicação com o servidor.", function(){});
+    iziToast.error({
+        title: 'Error',
+        message: 'Ocorreu uma falha na comunicação com o servidor.',
+    });
+}
+
+function auxfn_showmessage(tipo, mensagem){
+    if (tipo === 'sucesso'){
+        iziToast.success({
+            title: '',
+            message: mensagem,
+        });
+    }else if (tipo == 'alerta') {
+        iziToast.warning({
+            title: '',
+            message: mensagem,
+        });
+    }else if (tipo == 'erro') {
+        iziToast.error({
+            title: '',
+            message: mensagem,
+        });
+    }
 }

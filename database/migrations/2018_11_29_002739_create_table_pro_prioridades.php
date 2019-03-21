@@ -15,8 +15,8 @@ class CreateTableProPrioridades extends Migration
     {
         Schema::create('pro_prioridades', function (Blueprint $table) {
             $table->increments('prioridade_codigo');
-            $table->string('prioridade_descricao');
-            $table->integer('prioridade_grau');
+            $table->string('prioridade_descricao')->nullable();
+            $table->integer('prioridade_grau')->nullable();
             $table->timestamps();
         });
     }

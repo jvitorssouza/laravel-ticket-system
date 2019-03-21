@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-8 py-3 bg-primary rounded-right">
                     <div class="h2 mt-0">1700</div>
-                    <div class="text-uppercase">Uploads</div>
+                    <div class="text-uppercase">Chamados</div>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     <div class="h2 mt-0">700
                         <small>GB</small>
                     </div>
-                    <div class="text-uppercase">Quota</div>
+                    <div class="text-uppercase">Na minha fila</div>
                 </div>
             </div>
         </div>

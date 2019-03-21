@@ -12,10 +12,10 @@ class CreatePerfisPermissoesTable extends Migration
         Schema::create('sys_perfis_permissoes', function(Blueprint $table) {
             $table->increments('perfil_permissao_codigo');
 
-            $table->integer('perfil_codigo')->unsigned();
+            $table->integer('perfil_codigo')->nullable()->unsigned();
             $table->foreign('perfil_codigo')->references('perfil_codigo')->on('sys_perfil_acesso')->onDelete('cascade');
 
-            $table->integer('permissao_codigo')->unsigned();
+            $table->integer('permissao_codigo')->nullable()->unsigned();
             $table->foreign('permissao_codigo')->references('permissao_codigo')->on('sys_permissoes')->onDelete('cascade');
 
             $table->timestamps();

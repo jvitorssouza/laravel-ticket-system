@@ -51,18 +51,6 @@ class User extends Authenticatable
         return  Permissoes::whereIn('permissao_codigo', $permissoes)->get();
     }
 
-    public function getCanAttribute()
-    {
-        $permissions = [];
-        foreach (Permissoes::all() as $permission) {
-            if ($this->can($permission->permissao_descricao)) {
-                $permissions[$permission->permissao_descricao] = true;
-            } else {
-                $permissions[$permission->permissao_descricao] = false;
-            }
-        }
-        return $permissions;
-    }
 
     public function perfil(){
         return $this->belongsTo(Perfis::class, 'perfil_codigo', '');

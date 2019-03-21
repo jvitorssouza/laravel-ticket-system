@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -28,8 +29,7 @@ class AuthServiceProvider extends ServiceProvider
             foreach ($permissoes as $permissao)
             {
 
-                Gate::define($permissao->permissao_rota, function ($user) use ($permissao) {
-
+                Gate::define($permissao->permissao_rota, function (User $user) use ($permissao) {
                     return $user->possuiPermissao($permissao);
                 });
             }

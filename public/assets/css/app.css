@@ -5179,3 +5179,7 @@ body .jvectormap-zoomout {
 i {
     width: 1.8em;
 }
+
+.hide{
+    display: none;
+}

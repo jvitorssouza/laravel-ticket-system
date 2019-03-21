@@ -6,12 +6,16 @@
     <title>HelpTI</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <!-- WHIRL (spinners)-->
     <link rel="stylesheet" href="{{ asset('vendor/whirl/dist/whirl.css') }}">
     <!-- =============== BOOTSTRAP STYLES ===============-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" id="bscss">
     <!-- =============== APP STYLES ===============-->
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" id="maincss">
+    <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css?v=2.1.5') }}" media="screen" >
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.css') }}" id="maincss">
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-confirm/jquery-confirm.min.css') }}" id="maincss">
+
+    @yield('folha_estilo')
 </head>

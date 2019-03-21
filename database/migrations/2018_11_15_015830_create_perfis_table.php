@@ -11,7 +11,7 @@ class CreatePerfisTable extends Migration
     {
         Schema::create('sys_perfil_acesso', function(Blueprint $table) {
             $table->increments('perfil_codigo');
-            $table->string('perfil_descricao', 80);
+            $table->string('perfil_descricao', 80)->nullable();
             $table->timestamps();
         });
     }

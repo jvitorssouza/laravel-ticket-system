@@ -49,7 +49,7 @@
                         <div class="input-group with-focus">
                             <input type="password" name="password" id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Senha" required>
                             <div class="input-group-append">
-                                <span class="input-group-text fas fa-key text-muted bg-transparent border-left-0"></span>
+                                <span class="input-group-text fa fa-key text-muted bg-transparent border-left-0"></span>
                             </div>
                         </div>
                     </div>
