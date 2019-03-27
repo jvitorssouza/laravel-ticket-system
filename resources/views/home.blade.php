@@ -14,8 +14,9 @@
                     <em class="fas fa-cloud fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-primary rounded-right">
-                    <div class="h2 mt-0">1700</div>
-                    <div class="text-uppercase">Chamados</div>
+                    <div class="h2 mt-0">1</div>
+                    {{--                    <div class="h2 mt-0">{{ $qtd_hlpdesk }}</div>--}}
+                    <div class="text-uppercase">Chamado(s)</div>
                 </div>
             </div>
         </div>
@@ -50,16 +51,16 @@
             <div class="card flex-row align-items-center align-items-stretch border-0">
                 <div class="col-4 d-flex align-items-center bg-green justify-content-center rounded-left">
                     <div class="text-center">
-                        <div class="text-sm" data-now="" data-format="MMMM"></div>
+                        <div class="text-uppercase text-sm" data-now="" data-format="MMMM"></div>
                         <br>
-                        <div class="h2 mt-0" data-now="" data-format="D"></div>
+                        <div class="text-uppercase h2 mt-0" data-now="" data-format="D"></div>
                     </div>
                 </div>
 
                 <div class="col-8 py-3 rounded-right">
                     <div class="text-uppercase" data-now="" data-format="dddd"></div>
                     <br>
-                    <div class="h2 mt-0" data-now="" data-format="H:mm"></div>
+                    <div class="text-uppercase h2 mt-0" data-now="" data-format="H:mm"></div>
                 </div>
             </div>
             <!-- END date widget-->
@@ -68,30 +69,48 @@
     <!-- FIM CARDBOX -->
 
     <!-- CARD CONTEÚDO -->
-    <div class="card card-default">
-        <div class="card-header">
-            <a class="float-right" href="#" data-tool="card-collapse" data-toggle="tooltip" title="" data-original-title="Collapse card">
-                <em class="fa fa-minus"></em>
-            </a>
-            <div class="card-title">CARD EXEMPLO</div>
-        </div>
-        <div class="card-wrapper collapse show">
-            <div class="card-body">
-
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="text-info">Chamados Abertos X Chamados Fechados (Este Mês)</div>
+                    <div class="text-center py-4">
+                        <canvas id="grafico_chamado_aberto_chamado_fechado_mes"></canvas>
                     </div>
-                @endif
-
-                You are logged in!
-
-                @can('teste.index')
-                    <h1> Você tem permissão! </h1>
-                @endcan
-
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="text-info">Chamados Abertos por Departamentos (Este Mês)</div>
+                    <div class="text-center py-4">
+                        <canvas id="grafico_chamado_aberto_departamentos_mes"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="text-info">Chamados Abertos por Filial (Este Mês)</div>
+                    <div class="text-center py-4">
+                        <canvas id="grafico_chamado_aberto_empresas_mes"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- FIM CARD CONTEÚDO -->
+@endsection
+
+@section('scripts')
+    <script>
+        home.do_buscar_graficos();
+    </script>
 @endsection

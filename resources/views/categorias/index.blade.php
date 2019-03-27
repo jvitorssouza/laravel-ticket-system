@@ -59,6 +59,7 @@
                     <tr>
                         <th>Código</th>
                         <th>Descrição</th>
+                        <th>Departamento</th>
                         <th>Prioridade</th>
                         @if(Auth::user()->can('categorias.edit') || Auth::user()->can('categorias.destroy'))
                             <th colspan="100">Ações</th>

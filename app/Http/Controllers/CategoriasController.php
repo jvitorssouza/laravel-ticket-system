@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
+use App\Models\Departamentos;
 use App\Models\Prioridades;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class CategoriasController extends Controller
         $prioridades    = Prioridades::get();
         $categorias     = new Categorias();
         $categorias     = $categorias->join('pro_prioridades', 'pro_categorias.prioridade_codigo', '=', 'pro_prioridades.prioridade_codigo');
+        $categorias     = $categorias->leftJoin('pro_departamentos', 'pro_categorias.departamento_codigo', '=', 'pro_departamentos.departamento_codigo');
 
         if (isset($request->filtroDescricao) && $request->filtroDescricao != '') {
             $categorias = $categorias->where('categoria_descricao', 'like', '%' . $request->filtroDescricao . '%');
@@ -47,9 +49,10 @@ class CategoriasController extends Controller
 
     public function create()
     {
-        $prioridades = Prioridades::pluck('prioridade_descricao', 'prioridade_codigo');
+        $departamentos = Departamentos::pluck('departamento_descricao', 'departamento_codigo');
+        $prioridades   = Prioridades::pluck('prioridade_descricao', 'prioridade_codigo');
 
-        return view('categorias.create', compact('prioridades'));
+        return view('categorias.create', compact('prioridades','departamentos'));
     }
 
     public function store(Request $request)
@@ -84,10 +87,11 @@ class CategoriasController extends Controller
 
     public function edit($id)
     {
+        $departamentos = Departamentos::pluck('departamento_descricao', 'departamento_codigo');
         $prioridades = Prioridades::pluck('prioridade_descricao', 'prioridade_codigo');
         $categoria   = Categorias::where('categoria_codigo', $id)->first();
 
-        return view('categorias.edit', compact('categoria', 'prioridades'));
+        return view('categorias.edit', compact('categoria', 'prioridades', 'departamentos'));
     }
 
     public function update(Request $request, $id)
@@ -96,6 +100,7 @@ class CategoriasController extends Controller
 
             $update     = [
                 'categoria_descricao' => $request->categoria_descricao,
+                'departamento_codigo' => $request->departamento_codigo,
                 'prioridade_codigo' => $request->prioridade_codigo
             ];
 
@@ -151,6 +156,7 @@ class CategoriasController extends Controller
                 $html .= '<tr>';
                 $html .= '<td>' . $registros[$i]['categoria_codigo'] . '</td>';
                 $html .= '<td>' . $registros[$i]['categoria_descricao'] . '</td>';
+                $html .= '<td>' . $registros[$i]['departamento_descricao'] . '</td>';
                 $html .= '<td>' . $registros[$i]['prioridade_descricao'] . '</td>';
 
                 if (Gate::allows('categorias.edit')) {

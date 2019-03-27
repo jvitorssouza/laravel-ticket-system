@@ -164,6 +164,8 @@ class EmpresasController extends Controller
                 $html .=     strtoupper($registros[$i]['empresa_uf']);
                 $html .= '</td>';
 
+                $html .= '<td>'.$registros[$i]['empresa_cnpj'].'</td>';
+
                 if (Gate::allows('empresas.edit')) {
                     $html .= '<td><a href="'.route('empresas.edit', $registros[$i]['empresa_codigo']).'" class="btn btn-warning btn-sm" style="width: 40px;"><i class="fa fa-edit"></i></a ></td>';
                 }

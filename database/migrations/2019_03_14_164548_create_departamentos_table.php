@@ -20,6 +20,8 @@ class CreateDepartamentosTable extends Migration
             $table->integer('empresa_codigo')->nullable()->unsigned();
             $table->foreign('empresa_codigo')->references('empresa_codigo')->on('pro_empresas');
 
+            $table->string('departamento_cor')->nullable();
+
             $table->timestamps();
         });
     }

@@ -29,7 +29,6 @@
 <script src="{{ asset('assets/js/funcoesAux.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.multi-select.js') }}"></script>
 
-
 @if(session()->has('message'))
     <script>
         iziToast.success({
@@ -47,5 +46,48 @@
         });
     </script>
 @endif
+
+<script src="{{ asset('assets/js/Chart.js') }}"></script>
+
+<script>
+    var home = {
+        do_buscar_graficos : function () {
+            let params = '';
+            auxfn_do_ajax("{{route('dashboard.getGraficos')}}", params, home.do_buscar_graficos_ok, null);
+        },
+        
+        do_buscar_graficos_ok: function (resposta) {
+            // console.log(resposta);
+            var myDoughnutChart = new Chart($('#grafico_chamado_aberto_chamado_fechado_mes').get(), {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: resposta.abertos_fechados_mes.values,
+                        backgroundColor: resposta.abertos_fechados_mes.colors
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: resposta.abertos_fechados_mes.labels
+                }
+            });
+
+            var myBarChartDepartamentos = new Chart($('#grafico_chamado_aberto_departamentos_mes').get(), {
+                type: 'bar',
+                data: {
+                    datasets: resposta.abertos_departamentos_mes.datasets,
+                },
+
+            });
+
+            var myBarChartEmpresas = new Chart($('#grafico_chamado_aberto_empresas_mes').get(), {
+                type: 'bar',
+                data: {
+                    datasets: resposta.abertos_empresas_mes.datasets,
+                },
+
+            });
+        }
+    };
+</script>
 
 @yield('scripts')

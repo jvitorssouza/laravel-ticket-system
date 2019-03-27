@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
+use App\Models\Departamentos;
 use App\Models\Helpdesk;
 use App\Models\HelpdeskAnexos;
 use App\Models\HelpdeskInteracoes;
@@ -105,9 +106,10 @@ class HelpdeskController extends Controller
 
     public function create()
     {
-        $categorias = Categorias::pluck('categoria_descricao', 'categoria_codigo');
+        $categorias    = Categorias::pluck('categoria_descricao', 'categoria_codigo');
+        $departamentos = Departamentos::pluck('departamento_descricao', 'departamento_codigo');
 
-        return view('helpdesk.create', compact('categorias'));
+        return view('helpdesk.create', compact('categorias', 'departamentos'));
     }
 
     public function store(Request $request)
@@ -419,5 +421,10 @@ class HelpdeskController extends Controller
         } catch (ValidatorException $e) {
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
+    }
+
+    public function buscarCategorias(Request $request){
+        $categorias = Categorias::where('departamento_codigo', $request->departamento)->get();
+        return response()->json($categorias);
     }
 }

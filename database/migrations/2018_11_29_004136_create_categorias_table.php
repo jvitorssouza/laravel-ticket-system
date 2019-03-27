@@ -17,6 +17,9 @@ class CreateCategoriasTable extends Migration
             $table->increments('categoria_codigo');
             $table->string('categoria_descricao')->nullable();
 
+            $table->integer('departamento_codigo')->nullable()->unsigned();
+            $table->foreign('departamento_codigo')->references('departamento_codigo')->on('pro_departamentos');
+
             $table->integer('prioridade_codigo')->nullable()->unsigned();
             $table->foreign('prioridade_codigo')->references('prioridade_codigo')->on('pro_prioridades');
 

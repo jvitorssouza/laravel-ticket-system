@@ -11,6 +11,7 @@ class Categorias extends Model
 
     protected $fillable = [
         'categoria_descricao',
+        'departamento_codigo',
         'prioridade_codigo'
     ];
 

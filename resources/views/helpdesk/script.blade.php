@@ -121,8 +121,31 @@ var lista = {
 
         }
     }
-}
+};
+    
+var create = {
+    do_buscar_categorias: function () {
 
+        $('#categoria_codigo option').remove();
 
+        if ($('#departamento_codigo').val() != '') {
+            let params = '';
+
+            params += 'departamento=' + $('#departamento_codigo').val();
+
+            auxfn_do_ajax("{{ route('helpdesk.buscar_categorias') }}", params, create.do_alimenta_combo_categorias, null);
+        }else{
+            $('#categoria_codigo').append(new Option('Selecione um Departamento', ''));
+        }
+    },
+
+    do_alimenta_combo_categorias: function (resposta) {
+        if (resposta.length > 0){
+            for (let i = 0; i < resposta.length; i++){
+                $('#categoria_codigo').append(new Option(resposta[i].categoria_descricao, resposta[i].categoria_codigo));
+            }
+        }
+    }
+};
 
 </script>

@@ -9,6 +9,14 @@
         </div>
 
         <div class="col-md-12">
+            <div class="form-group{{ $errors->has("departamento_codigo") ? ' has-error' : '' }}">
+                {!! Form::label("departamento_codigo", 'Departamento', ['class' => '']) !!}
+                {{ Form::select('departamento_codigo', $departamentos, null, ["class" => "form-control", 'id'=>'departamento_codigo']) }}
+                <small class="text-danger">{{ $errors->first("departamento_codigo") }}</small>
+            </div>
+        </div>
+
+        <div class="col-md-12">
             <div class="form-group{{ $errors->has("prioridade_codigo") ? ' has-error' : '' }}">
                 {!! Form::label("prioridade_codigo", 'Prioridade', ['class' => '']) !!}
                 {{ Form::select('prioridade_codigo', $prioridades, null, ["class" => "form-control", 'id'=>'prioridade_codigo', 'required', 'required']) }}

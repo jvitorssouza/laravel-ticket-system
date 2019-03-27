@@ -24,6 +24,7 @@ class CreateEmpresasTable extends Migration
             $table->string('empresa_cidade')->nullable();
             $table->string('empresa_uf', 2)->nullable();
             $table->string('empresa_cep', 8)->nullable();
+            $table->string('empresa_cor')->nullable();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateHelpdeskStatusTable extends Migration
             $table->increments('status_codigo');
             $table->string('status_descricao')->nullable();
             $table->string('status_classe')->nullable();
+            $table->string('status_cor')->nullable();
             $table->timestamps();
         });
     }
