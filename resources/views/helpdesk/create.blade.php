@@ -29,10 +29,6 @@
     $('.btn-add-file').click(function () {
         $('.div_files').append('<input type="file" class="form-control mt-3" name="fotos[]" multiple accept="image/x-png,image/gif,image/jpeg"/>');
     });
-
-    $('#departamento_codigo').change(function () {
-        create.do_buscar_categorias();
-    });
 </script>
 
 

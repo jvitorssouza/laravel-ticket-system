@@ -32,7 +32,6 @@
                     </div>
                 </div>
 
-
                 <button type="submit" class="btn btn-primary float-right mt-3 mr-3 mb-3"><i class="fas fa-save"></i>
                     Salvar
                 </button>
@@ -46,7 +45,7 @@
 @endsection
 
 @section('scripts')
-    @include('categorias.script')
+    @include('helpdesk.script')
 
     <script>
         $('.btn-add-file').click(function () {
@@ -58,4 +57,10 @@
             $(this).parents('.card-imagem').remove();
         })
     </script>
+
+    @if(isset($helpdesk->categoria_codigo) && $helpdesk->categoria_departamento != '')
+        <script>
+            $('#categoria_codigo').val('{{ $helpdesk->categoria_codigo }}').change();
+        </script>
+    @endif
 @endsection

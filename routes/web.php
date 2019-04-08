@@ -1,7 +1,13 @@
 <?php
 
+
 Route::get('/', function () {
-    return view('auth.login');
+    if(Auth::guest())
+    {
+        return view('auth.login');
+    }else{
+        return redirect('/home');
+    }
 });
 
 Auth::routes();
@@ -13,7 +19,6 @@ Route::group(['middleware' => ['auth', 'checkPermission']], function () {
     Route::resource('helpdesk',      'HelpdeskController');
     Route::resource('empresas',      'EmpresasController');
     Route::resource('departamentos',  'DepartamentosController');
-    Route::resource('fabricante',    'HelpdeskController');
     Route::resource('perfilacesso',    'PerfisController');
 
     /* -------------------- HELPDESK -------------------- */

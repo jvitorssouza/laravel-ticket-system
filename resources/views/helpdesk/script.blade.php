@@ -1,4 +1,9 @@
 <script>
+
+    $('#departamento_codigo').change(function () {
+        create.do_buscar_categorias();
+    });
+
 var lista = {
 
     do_buscar: function(pagina = null){
@@ -147,5 +152,4 @@ var create = {
         }
     }
 };
-
 </script>

@@ -181,16 +181,17 @@ class HelpdeskController extends Controller
 
     public function edit($id)
     {
-        $categorias = Categorias::pluck('categoria_descricao', 'categoria_codigo');
-        $helpdesk   = Helpdesk::where('helpdesk_codigo', $id)->first();
+        $departamentos = Departamentos::pluck('departamento_descricao', 'departamento_codigo');
+        $helpdesk   = Helpdesk::where('helpdesk_codigo', $id)->leftJoin('pro_categorias', 'pro_helpdesk.categoria_codigo', '=', 'pro_categorias.categoria_codigo')->first();
         $imagens    = HelpdeskAnexos::where('helpdesk_codigo', $id)->get();
 
+        $categorias = Categorias::where('departamento_codigo', $helpdesk->departamento_codigo)->pluck('categoria_descricao', 'categoria_codigo');
 
         if ($helpdesk->status_codigo == 4){
             return redirect('helpdesk')->withErrors('Não é permitido editar um chamado finalizado')->withInput();
         }
 
-        return view('helpdesk.edit', compact('helpdesk', 'categorias', 'imagens'));
+        return view('helpdesk.edit', compact('helpdesk', 'categorias', 'departamentos', 'imagens'));
     }
 
     public function update(Request $request, $id)

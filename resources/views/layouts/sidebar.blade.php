@@ -10,7 +10,7 @@
                             <!-- FOTO DO USUÁRIO -->
                             <div class="user-block-picture">
                                 <div class="user-block-status">
-                                    <img class="img-thumbnail rounded-circle" src="{{ asset('assets/images/user/02.jpg') }}" alt="Avatar" width="60" height="60">
+                                    <img class="img-thumbnail rounded-circle" src="{{ asset('assets/images/user/user_default.png') }}" alt="Avatar" width="60" height="60">
                                     <div class="circle bg-success circle-lg"></div>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@
                 <!-- FIM INFORMAÇÕES DO USUÁRIOS -->
                 <!-- ITENS DO MENU -->
                 <li class="nav-heading ">
-                    <span>Main Navigation</span>
+                    <span>Menu Principal</span>
                 </li>
 
                 <li class=" {{ $rota_atual == 'dashboard.index' ? 'active' : '' }}  ">
@@ -56,14 +56,6 @@
                             <li class=" {{ $rota_atual == 'departamentos.index' || $rota_atual == 'departamentos.edit' || $rota_atual == 'departamentos.create' ? 'active' : '' }}">
                                 <a href="{{ route('departamentos.index') }}" title="Listagem de Departamentos">
                                     <i class="fas fa-boxes"></i> <span> Departamentos</span>
-                                </a>
-                            </li>
-                        @endcan
-
-                        @can('fabricante.index')
-                            <li class=" {{ $rota_atual == 'fabricante.index' || $rota_atual == 'fabricante.edit' || $rota_atual == 'fabricante.create' ? 'active' : '' }}">
-                                <a href="{{ route('fabricante.index') }}" title="Listagem de Fabricantes">
-                                    <i class="fas fa-users"></i> <span> Fabricantes</span>
                                 </a>
                             </li>
                         @endcan

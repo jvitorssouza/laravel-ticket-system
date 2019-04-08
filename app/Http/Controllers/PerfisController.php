@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perfis;
+use App\Models\PerfisPermissoes;
+use App\Models\Permissoes;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,9 @@ class PerfisController extends Controller
 
     public function create()
     {
-        return view('perfis.create');
+        $permissoes   = Permissoes::all();
+        $selecionadas = [];
+        return view('perfis.create', compact('permissoes', 'selecionadas'));
     }
 
     public function store(Request $request)
@@ -47,6 +51,17 @@ class PerfisController extends Controller
         try {
 
             $perfil  = Perfis::create($request->all());
+
+            if (sizeof($request->permissoes) > 0){
+                for ($i = 0; $i < sizeof($request->permissoes); $i++){
+                    $dados = [
+                        'perfil_codigo' => $perfil['perfil_codigo'],
+                        'permissao_codigo' => $request->permissoes[$i]
+                    ];
+
+                    PerfisPermissoes::create($dados);
+                }
+            }
 
             $response   = [
                 'message' => env('REGISTRO_CADASTRADO'),
@@ -74,10 +89,19 @@ class PerfisController extends Controller
 
     public function edit($id)
     {
-        $empresas = Empresas::pluck('empresa_rzsocial', 'empresa_codigo');
-        $departamento   = Departamentos::where('departamento_codigo', $id)->first();
+        $perfil       = Perfis::where('perfil_codigo', $id)->first();
+        $permissoes   = Permissoes::all();
+        $permissoes_selecionadas = PerfisPermissoes::select('permissao_codigo')->where('perfil_codigo', $id)->get();
 
-        return view('departamentos.edit', compact('departamento', 'empresas'));
+        $selecionadas = [];
+
+        for ($i = 0; $i < sizeof($permissoes_selecionadas); $i++){
+            if (!in_array($permissoes_selecionadas[$i]->permissao_codigo, $selecionadas)){
+                array_push($selecionadas, $permissoes_selecionadas[$i]->permissao_codigo);
+            }
+        }
+
+        return view('perfis.edit', compact('perfil','permissoes', 'selecionadas'));
     }
 
     public function update(Request $request, $id)
@@ -85,15 +109,55 @@ class PerfisController extends Controller
         try {
 
             $update     = [
-                'departamento_descricao' => $request->departamento_descricao,
-                'empresa_codigo' => $request->empresa_codigo
+                'perfil_descricao' => $request->perfil_descricao
             ];
 
-            $departamento  = Departamentos::where('departamento_codigo', $id)->update($update);
+            $perfil  = Perfis::where('perfil_codigo', $id)->update($update);
+
+
+            /* VERIFICA PERMISSOES QUE JÁ ESTAVAM SELECIONADAS */
+
+            $permissoes_selecionadas = PerfisPermissoes::select('permissao_codigo')->where('perfil_codigo', $id)->get();
+
+            $selecionadas = [];
+
+            for ($i = 0; $i < sizeof($permissoes_selecionadas); $i++){
+                if (!in_array($permissoes_selecionadas[$i]->permissao_codigo, $selecionadas)){
+                    array_push($selecionadas, $permissoes_selecionadas[$i]->permissao_codigo);
+                }
+            }
+
+            /* ADICIONA OU REMOVE PERMISSOES */
+            $adicionar = [];
+            $remover   = [];
+
+            for ($i = 0; $i < sizeof($request->permissoes); $i++){
+                if (!in_array($request->permissoes[$i], $selecionadas)){
+                    array_push($adicionar, $request->permissoes[$i]);
+                }
+            }
+
+            for ($i = 0; $i < sizeof($selecionadas); $i++){
+                if (!in_array($selecionadas[$i], $request->permissoes)){
+                    array_push($remover, $selecionadas[$i]);
+                }
+            }
+
+            // ADICIONA OS PERFIS
+            for ($i = 0; $i < sizeof($adicionar); $i++){
+                $dados = [
+                    'perfil_codigo' => $id,
+                    'permissao_codigo' => $adicionar[$i]
+                ];
+
+                $adiciona = PerfisPermissoes::create($dados);
+            }
+
+            $remove = PerfisPermissoes::whereIn('permissao_codigo', $remover)->delete();
 
             $response   = [
                 'message' => env('REGISTRO_ATUALIZADO'),
-                'data'    => $departamento,
+                'data'    => $perfil,
             ];
 
             if ($request->wantsJson()) {
@@ -101,7 +165,7 @@ class PerfisController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->route('departamentos.index')->with('message', $response['message']);
+            return redirect()->route('perfilacesso.index')->with('message', $response['message']);
 
         } catch (ValidatorException $e) {
 
@@ -119,7 +183,8 @@ class PerfisController extends Controller
 
     public function destroy($id)
     {
-        $deleted = Departamentos::find($id)->delete();
+        $remover_permissoes = PerfisPermissoes::where('perfil_codigo', $id)->delete();
+        $deleted = Perfis::find($id)->delete();
 
         if (request()->wantsJson()) {
 

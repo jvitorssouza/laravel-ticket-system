@@ -11,7 +11,7 @@
         <div class="col-md-6">
             <div class="form-group{{ $errors->has("categoria_codigo") ? ' has-error' : '' }}">
                 {!! Form::label("categoria_codigo", 'Categoria do Chamado', ['class' => '']) !!}
-                {{ Form::select('categoria_codigo', [], null, ["class" => "form-control", 'id'=>'categoria_codigo', 'placeholder' => 'Selecione umd Departamento','required', 'required']) }}
+                {{ Form::select('categoria_codigo',  $categorias == [] ? [] : $categorias , null, ["class" => "form-control", 'id'=>'categoria_codigo', 'placeholder' => 'Selecione um Departamento','required', 'required' ]) }}
                 <small class="text-danger">{{ $errors->first("categoria_codigo") }}</small>
             </div>
         </div>

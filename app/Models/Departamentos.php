@@ -11,6 +11,7 @@ class Departamentos extends Model
 
     protected $fillable = [
         'departamento_descricao',
+        'departamento_cor',
         'empresa_codigo'
     ];
 }

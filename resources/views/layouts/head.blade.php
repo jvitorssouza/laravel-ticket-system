@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}" id="bscss">
     <!-- =============== APP STYLES ===============-->
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" id="maincss">
+    <link rel="stylesheet" href="{{ asset('assets/css/multi-select.css') }}" id="maincss">
     <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css?v=2.1.5') }}" media="screen" >
     <link rel="stylesheet" href="{{ asset('assets/css/iziToast.css') }}" id="maincss">
     <link rel="stylesheet" href="{{ asset('vendor/jquery-confirm/jquery-confirm.min.css') }}" id="maincss">

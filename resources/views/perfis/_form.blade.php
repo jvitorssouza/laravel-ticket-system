@@ -8,18 +8,19 @@
             </div>
         </div>
         <div class="col-md-12">
-            <select id='keep-order' multiple='multiple'>
-                <option value='elem_1'>elem 1</option>
-                <option value='elem_2'>elem 2</option>
-                <option value='elem_3'>elem 3</option>
-                <option value='elem_4'>elem 4</option>
-                ...
-                <option value='elem_100'>elem 100</option>
+            <h3>Permissões</h3>
+            <select id="permissoes" name="permissoes[]" multiple="multiple" class="form-control">
+                @foreach($permissoes as $p)
+                    <option value="{{ $p->permissao_codigo }}" {{ in_array($p->permissao_codigo, $selecionadas) ? 'selected' : '' }}> {{ $p->permissao_descricao}} </option>
+                @endforeach
             </select>
+{{--            {!! Form::select("permissoes", $permissoes, null, ["class" => "form-control", 'id'=>'permissoes', 'required','required', 'name' => 'permissoes[]', 'multiple' => 'multiple'])  !!}--}}
         </div>
     </div>
 </div>
 
 @section('scripts')
-
+    <script>
+        $('#permissoes').multiSelect();
+    </script>
 @endsection

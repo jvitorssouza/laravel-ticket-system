@@ -72,6 +72,14 @@
                 <small class="text-danger">{{ $errors->first("empresa_uf") }}</small>
             </div>
         </div>
+
+        <div class="col-md-12">
+            <div class="form-group{{ $errors->has("empresa_cor") ? ' has-error' : '' }}">
+                {!! Form::label("empresa_cor", 'Cor nos gráficos', ['class' => '']) !!}
+                {{ Form::color('empresa_cor', null, ["class" => "form-control", 'id'=>'empresa_cor', 'required', 'required']) }}
+                <small class="text-danger">{{ $errors->first("empresa_cor") }}</small>
+            </div>
+        </div>
     </div>
 </div>
 

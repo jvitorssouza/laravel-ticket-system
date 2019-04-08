@@ -11,12 +11,11 @@
             <!-- START card-->
             <div class="card flex-row align-items-center align-items-stretch border-0">
                 <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
-                    <em class="fas fa-cloud fa-3x"></em>
+                    <em class="fas fa-receipt fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-primary rounded-right">
-                    <div class="h2 mt-0">1</div>
-                    {{--                    <div class="h2 mt-0">{{ $qtd_hlpdesk }}</div>--}}
-                    <div class="text-uppercase">Chamado(s)</div>
+                    <div class="h2 mt-0">{{ $qtd_helpdesk_aberto }}</div>
+                    <div class="text-uppercase"><a href="{{ route('helpdesk.index') }}" style="color: white;"> Chamado(s) </a></div>
                 </div>
             </div>
         </div>
@@ -24,13 +23,11 @@
             <!-- START card-->
             <div class="card flex-row align-items-center align-items-stretch border-0">
                 <div class="col-4 d-flex align-items-center bg-purple-dark justify-content-center rounded-left">
-                    <em class="fas fa-globe fa-3x"></em>
+                    <i class="fas fa-spinner fa-3x"></i>
                 </div>
                 <div class="col-8 py-3 bg-purple rounded-right">
-                    <div class="h2 mt-0">700
-                        <small>GB</small>
-                    </div>
-                    <div class="text-uppercase">Na minha fila</div>
+                    <div class="h2 mt-0">{{ $qtd_helpdesk_aguardando }}</div>
+                    <div class="text-uppercase">Aguardando Atend.</div>
                 </div>
             </div>
         </div>
@@ -38,11 +35,11 @@
             <!-- START card-->
             <div class="card flex-row align-items-center align-items-stretch border-0">
                 <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
-                    <em class="fas fa-comments fa-3x"></em>
+                    <i class="fas fa-headset fa-3x"></i>
                 </div>
                 <div class="col-8 py-3 bg-green rounded-right">
-                    <div class="h2 mt-0">500</div>
-                    <div class="text-uppercase">Reviews</div>
+                    <div class="h2 mt-0">{{ $qtd_helpdesk_atendimento }}</div>
+                    <div class="text-uppercase">Em Atendimento</div>
                 </div>
             </div>
         </div>
@@ -73,9 +70,9 @@
         <div class="col-md-6">
             <div class="card card-default">
                 <div class="card-body">
-                    <div class="text-info">Chamados Abertos X Chamados Fechados (Este Mês)</div>
+                    <div class="text-info">Chamados Abertos por Status</div>
                     <div class="text-center py-4">
-                        <canvas id="grafico_chamado_aberto_chamado_fechado_mes"></canvas>
+                        <canvas id="grafico_chamado_aberto_status_mes"></canvas>
                     </div>
                 </div>
             </div>
@@ -83,9 +80,9 @@
         <div class="col-md-6">
             <div class="card card-default">
                 <div class="card-body">
-                    <div class="text-info">Chamados Abertos por Departamentos (Este Mês)</div>
+                    <div class="text-info">Chamados Abertos por Categorias</div>
                     <div class="text-center py-4">
-                        <canvas id="grafico_chamado_aberto_departamentos_mes"></canvas>
+                        <canvas id="grafico_chamado_aberto_categorias_mes"></canvas>
                     </div>
                 </div>
             </div>
@@ -96,7 +93,17 @@
         <div class="col-md-6">
             <div class="card card-default">
                 <div class="card-body">
-                    <div class="text-info">Chamados Abertos por Filial (Este Mês)</div>
+                    <div class="text-info">Chamados Abertos por Departamentos</div>
+                    <div class="text-center py-4">
+                        <canvas id="grafico_chamado_aberto_departamentos_mes"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="text-info">Chamados Abertos por Filial</div>
                     <div class="text-center py-4">
                         <canvas id="grafico_chamado_aberto_empresas_mes"></canvas>
                     </div>

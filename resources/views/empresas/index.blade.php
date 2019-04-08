@@ -48,7 +48,7 @@
                             class="fas fa-plus"></i> Nova Empresa </a>
                 @endcan
 
-                <table class="table table-bordered table-striped table-hover tabela_empresas">
+                <table class="table table-sm table-bordered table-striped table-hover tabela_empresas">
                     <thead>
                     <tr>
                         <th>Código</th>

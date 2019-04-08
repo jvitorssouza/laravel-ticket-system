@@ -58,16 +58,29 @@
         
         do_buscar_graficos_ok: function (resposta) {
             // console.log(resposta);
-            var myDoughnutChart = new Chart($('#grafico_chamado_aberto_chamado_fechado_mes').get(), {
+            var myDoughnutChartStatus = new Chart($('#grafico_chamado_aberto_status_mes').get(), {
                 type: 'doughnut',
                 data: {
                     datasets: [{
-                        data: resposta.abertos_fechados_mes.values,
-                        backgroundColor: resposta.abertos_fechados_mes.colors
+                        data: resposta.abertos_status_mes.values,
+                        backgroundColor: resposta.abertos_status_mes.colors
                     }],
 
                     // These labels appear in the legend and in the tooltips when hovering different arcs
-                    labels: resposta.abertos_fechados_mes.labels
+                    labels: resposta.abertos_status_mes.labels
+                }
+            });
+
+            var myDoughnutChartCategoria = new Chart($('#grafico_chamado_aberto_categorias_mes').get(), {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: resposta.abertos_categorias_mes.values,
+                        backgroundColor: resposta.abertos_categorias_mes.colors
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: resposta.abertos_categorias_mes.labels
                 }
             });
 

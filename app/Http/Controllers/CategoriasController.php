@@ -101,7 +101,8 @@ class CategoriasController extends Controller
             $update     = [
                 'categoria_descricao' => $request->categoria_descricao,
                 'departamento_codigo' => $request->departamento_codigo,
-                'prioridade_codigo' => $request->prioridade_codigo
+                'prioridade_codigo' => $request->prioridade_codigo,
+                'categoria_cor' => $request->categoria_cor
             ];
 
             $categoria  = Categorias::where('categoria_codigo', $id)->update($update);

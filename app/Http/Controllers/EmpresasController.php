@@ -100,7 +100,8 @@ class EmpresasController extends Controller
                 'empresa_bairro' => $request->empresa_bairro,
                 'empresa_cidade' => $request->empresa_cidade,
                 'empresa_uf' => $request->empresa_uf,
-                'empresa_cep' => $request->empresa_cep
+                'empresa_cep' => $request->empresa_cep,
+                'empresa_cor' => $request->empresa_cor
             ];
 
             $empresa  = Empresas::where('empresa_codigo', $id)->update($update);

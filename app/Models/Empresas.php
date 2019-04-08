@@ -18,6 +18,7 @@ class Empresas extends Model
         'empresa_bairro',
         'empresa_cidade',
         'empresa_uf',
-        'empresa_cep'
+        'empresa_cep',
+        'empresa_cor'
     ];
 }

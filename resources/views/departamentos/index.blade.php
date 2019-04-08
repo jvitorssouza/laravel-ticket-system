@@ -54,7 +54,7 @@
                             class="fas fa-plus"></i> Novo Departamento </a>
                 @endcan
 
-                <table class="table table-bordered table-striped table-hover tabela_categorias">
+                <table class="table table-sm table-bordered table-striped table-hover tabela_categorias">
                     <thead>
                     <tr>
                         <th>Código</th>

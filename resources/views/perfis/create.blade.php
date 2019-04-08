@@ -24,7 +24,4 @@
 
 @section('scripts')
     @include('perfis.script')
-    <script>
-        $('#my-select').multiSelect();
-    </script>
 @endsection

@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <table class="table table-bordered table-striped table-hover table-condensed tabela_helpdesk">
+                <table class="table table-sm table-bordered table-striped table-hover table-condensed tabela_helpdesk">
                     <thead>
                     <tr>
                         <th>Código</th>

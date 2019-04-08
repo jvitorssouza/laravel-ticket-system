@@ -96,7 +96,8 @@ class DepartamentosController extends Controller
 
             $update     = [
                 'departamento_descricao' => $request->departamento_descricao,
-                'empresa_codigo' => $request->empresa_codigo
+                'empresa_codigo' => $request->empresa_codigo,
+                'departamento_cor' => $request->departamento_cor,
             ];
 
             $departamento  = Departamentos::where('departamento_codigo', $id)->update($update);
