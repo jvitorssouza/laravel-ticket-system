@@ -10,7 +10,7 @@ Hardware, Sistema, entre outros.
 
 ## Como Instalar
 1. Abra o terminal git na pasta desejada
-2. Dê o git clone https://gitlab.com/vitorssouza/helpti.git
+2. Dê o git clone https://github.com/jvitorssouza/laravel-ticket-system.git
 3. Entre na pasta do projeto, e instale as dependências do projeto com o comando "composer install"
 4. Após instalado as dependências, copie o arquivo .env.example renomeando-o para .env
 5. Execute o comando "php artisan key:generate" para gerar a Key do sistema.
